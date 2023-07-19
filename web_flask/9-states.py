@@ -22,7 +22,7 @@ def states_list():
 
 
 @app.route('/states/<id>', strict_slashes=False)
-def states_id():
+def states_id(id):
     """displays state with id"""
     state = storage.get(State, id)
     if state:
@@ -30,6 +30,12 @@ def states_id():
         return render_template('9-states.html', state=state, cities=cities)
     else:
         return render_template('9-states.html', not_found=True)
+
+
+@app.route('/states', strict_slashes=False)
+def states():
+    """displays OK"""
+    return "OK"
 
 
 if __name__ == '__main__':
